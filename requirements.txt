@@ -1,4 +1,5 @@
 numpy
+openai
 bs4
 requests
 scipy
