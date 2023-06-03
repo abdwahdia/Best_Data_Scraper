@@ -29,7 +29,7 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
 
 Features = st.text_input("Please enter the features")
 st.write(Features)
-print(Features=='Title')
+print(f'The Features are {Features}')
 # Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
 # Link = input("Enter the link of the page: ")
 # Number_of_pages = input("Enter the number pages: ")
