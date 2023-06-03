@@ -27,7 +27,8 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
     )
     return response.choices[0].message["content"]
 
-Features = st.text_input("Please enter the features ", "")
+Features = st.text_input("Please enter the features")
+st.write(Features)
 print(Features)
 # Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
 # Link = input("Enter the link of the page: ")
