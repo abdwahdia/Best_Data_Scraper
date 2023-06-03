@@ -27,27 +27,28 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
     )
     return response.choices[0].message["content"]
 
-Features = input("Please enter the features : ")
-Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
-Link = input("Enter the link of the page: ")
-Number_of_pages = input("Enter the number pages: ")
+Features = st.text_input("Please enter the features ", "")
+print(Features)
+# Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
+# Link = input("Enter the link of the page: ")
+# Number_of_pages = input("Enter the number pages: ")
 
 
-prompt = f"""
-Your task is to provide the code that scrapes the {Features} of the {Type_of_Items} in {Number_of_pages} pages of the following web site whose link is : {Link} \
-Put the data into a dataframe whose variables will be {Features} \
-Use try and except python solution to exclude the errors when scraping the data \
-I just want the code nothing else and don't print the dataframe in the code 
-"""
-response = get_completion(prompt)
-exec(response)
+# prompt = f"""
+# Your task is to provide the code that scrapes the {Features} of the {Type_of_Items} in {Number_of_pages} pages of the following web site whose link is : {Link} \
+# Put the data into a dataframe whose variables will be {Features} \
+# Use try and except python solution to exclude the errors when scraping the data \
+# I just want the code nothing else and don't print the dataframe in the code 
+# """
+# response = get_completion(prompt)
+# exec(response)
 
-st.dataframe(df)
+# st.dataframe(df)
 
-def filedownload(df):
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
-    href = f'<a href="data:file/csv;base64,{b64}" download="Vehicles_data.csv">Download CSV File</a>'
-    return href
+# def filedownload(df):
+#     csv = df.to_csv(index=False)
+#     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
+#     href = f'<a href="data:file/csv;base64,{b64}" download="Vehicles_data.csv">Download CSV File</a>'
+#     return href
 
-st.markdown(filedownload(df), unsafe_allow_html=True)
+# st.markdown(filedownload(df), unsafe_allow_html=True)
