@@ -28,21 +28,19 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
     return response.choices[0].message["content"]
 
 Features = st.text_input("Please enter the features")
-st.write(Features)
-print(f'The Features are {Features}')
-# Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
-# Link = input("Enter the link of the page: ")
-# Number_of_pages = input("Enter the number pages: ")
+Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
+Link = input("Enter the link of the page: ")
+Number_of_pages = input("Enter the number pages: ")
 
 
-# prompt = f"""
-# Your task is to provide the code that scrapes the {Features} of the {Type_of_Items} in {Number_of_pages} pages of the following web site whose link is : {Link} \
-# Put the data into a dataframe whose variables will be {Features} \
-# Use try and except python solution to exclude the errors when scraping the data \
-# I just want the code nothing else and don't print the dataframe in the code 
-# """
-# response = get_completion(prompt)
-# exec(response)
+prompt = f"""
+Your task is to provide the code that scrapes the {Features} of the {Type_of_Items} in {Number_of_pages} pages of the following web site whose link is : {Link} \
+Put the data into a dataframe whose variables will be {Features} \
+Use try and except python solution to exclude the errors when scraping the data \
+I just want the code nothing else and don't print the dataframe in the code 
+"""
+response = get_completion(prompt)
+exec(response)
 
 # st.dataframe(df)
 
