@@ -16,7 +16,7 @@ This app performs simple webscraping of data from any webpage using ChatGPT prom
 """)
 
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def get_completion(prompt, model="gpt-3.5-turbo", temperature=0): 
     messages = [{"role": "user", "content": prompt}]
@@ -27,10 +27,10 @@ def get_completion(prompt, model="gpt-3.5-turbo", temperature=0):
     )
     return response.choices[0].message["content"]
 
-Features = st.text_input("Please enter the features")
-Type_of_Items = input("Enter the type of items you want to dowmnload their features :")
-Link = input("Enter the link of the page: ")
-Number_of_pages = input("Enter the number pages: ")
+Features = st.text_input("Please enter the features ", "")
+Type_of_Items = st.text_input("Enter the type of items you want to dowmnload their features","")
+Link = st.text_input("Enter the link of the page","")
+Number_of_pages = st.text_input("Enter the number pages", "")
 
 
 prompt = f"""
@@ -42,12 +42,12 @@ I just want the code nothing else and don't print the dataframe in the code
 response = get_completion(prompt)
 exec(response)
 
-# st.dataframe(df)
+st.dataframe(df)
 
-# def filedownload(df):
-#     csv = df.to_csv(index=False)
-#     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
-#     href = f'<a href="data:file/csv;base64,{b64}" download="Vehicles_data.csv">Download CSV File</a>'
-#     return href
+def filedownload(df):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
+    href = f'<a href="data:file/csv;base64,{b64}" download="Vehicles_data.csv">Download CSV File</a>'
+    return href
 
-# st.markdown(filedownload(df), unsafe_allow_html=True)
+st.markdown(filedownload(df), unsafe_allow_html=True)
