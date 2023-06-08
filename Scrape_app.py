@@ -16,7 +16,7 @@ This app performs simple webscraping of data from any webpage using ChatGPT prom
 """)
 
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def get_completion(prompt, model="gpt-3.5-turbo", temperature=0): 
     messages = [{"role": "user", "content": prompt}]
